@@ -53,3 +53,18 @@ What was done:
 10. Create **kubernetes-controllers/nodeexporter-daemonset.yaml** and check that we could receive metrics. 
 
 </details>
+
+
+<details>
+<summary> <b>HW №3 Kubernetes-security</b> </summary>
+=========================================
+
+What was done:
+1. Prepared manifests for creating required resources: user, namespace, clusterrole, role, bindings.
+2. I checked rights of service accounts using "auth can-i" 
+
+```Go
+kubectl auth can-i <verb> <resource> --as=system:serviceaccount:<namespace>:<serviceaccountname> [-n <namespace>]
+```
+
+</details>
