@@ -68,3 +68,38 @@ kubectl auth can-i <verb> <resource> --as=system:serviceaccount:<namespace>:<ser
 ```
 
 </details>
+
+
+
+<details>
+<summary> <b>HW №4 Kubernetes-networks</b> </summary>
+=========================================
+
+What was done:
+1. Update kubernetes-intro/web-pod.yaml add some probes: readinessProbe and livenessProbe 
+2. Create kubernetes-networks/web-deploy.yaml based on kubernetes-intro/web-pod.yaml
+3. Create service with clusterIP - kubernetes-networks/web-svc-cip.yaml
+4. Check that pod avalible throught clusterip inside cluster
+5. Enable ipvs mode on kube-proxy
+6. Install MetalLB
+7. Configure MetalLB kubernetes-networks/metallb-config.yaml
+8. Create service with LoadBalancer IP - kubernetes-networks/web-svc-lb.yaml
+9. Check that addres was allocated
+10. Add static route for network 172.17.255.0/24
+11. Check that web pods availbel throught LoadBalancer IP
+12. Create manifests for publishing dns ./coredns
+13. Add annotation for sharing IP between services - metallb.universe.tf/allow-shared-ip: "Share-172-17-255-5"
+14. Install nginx ingress controller
+15. Create ingress service with LB IP - kubernetes-networks/nginx-lb.yaml
+16. Create service type:ClusterIP with out allocation ClusterIP - kubernetes-networks/web-svc-headless.yaml
+17. Create Ingress rule for service "web" - kubernetes-networks/web-ingress.yaml
+18. Check that service "web" avalible thought Ingress
+19. Install kubernetes-dashboard
+20. Create manifest for publishing kubernetes-dashboard throught Ingress - kubernetes-networks/dashboard/kubernetes-dashboard-ingress.yaml
+21. Create new deployments with different ver. of app
+22. Create ingress rules to Redirecting part of the traffic to a dedicated group of pods should
+redirect part of the traffic to the allocated group of pods. /canary
+23. Check that request without header go app2 and request with header go to app2.
+
+
+</details>
