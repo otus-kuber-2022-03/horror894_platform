@@ -8,6 +8,12 @@ spec:
   containers:
   - name: http-intro
     image: docker.io/horror894/intro-http:1.0
+    readinessProbe:
+      httpGet:
+        path: /index.html
+        port: 8000
+    livenessProbe:   
+      tcpSocket: { port: 8000 }
     volumeMounts:
     - name: app
       mountPath: /app

@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: canary-app-1
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: canary-app
+      version: v1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 100%
+      maxSurge: 0
+  template:
+    metadata:
+      name: canary-app-1
+      labels:
+        app: canary-app
+        version: v1
+    spec:
+      containers:
+      - name: canary-app-1
+        image: docker.io/horror894/canary-app-cenos7:1.0
+        readinessProbe:
+          httpGet:
+            path: /index.html
+            port: 8000
+        livenessProbe:   
+          tcpSocket: { port: 8000 }
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: canary-app-1
+spec:
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    name: http
+    port: 80
+    targetPort: 8000
+  selector:
+    app: canary-app
+    version: v1
