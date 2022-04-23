@@ -103,3 +103,17 @@ redirect part of the traffic to the allocated group of pods. /canary
 
 
 </details>
+
+
+
+<details>
+<summary> <b>HW №5 Kubernetes-volumes</b> </summary>
+=========================================
+
+What was done:
+1. StatefulSet MinIO deployed
+2. Headless Service Deployed
+3. Secret configured with "type: Opaque ", deploy was changed to ref to created secret.
+
+
+</details>
