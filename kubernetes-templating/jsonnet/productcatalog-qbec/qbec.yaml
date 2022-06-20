@@ -1,0 +1,10 @@
+apiVersion: qbec.io/v1alpha1
+kind: App
+metadata:
+  name: productcatalog
+spec:
+  environments:
+    default:
+      defaultNamespace: hipster-shop
+      server: https://10.128.0.7
+  vars: {}

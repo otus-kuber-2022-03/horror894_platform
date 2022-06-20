@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+  
+bases:
+- ../../base
+
+namespace: hipster-shop
+commonLabels:
+    env: dev
+
+patchesStrategicMerge:
+- cartservice-deployment-v001.yaml
+
+images:
+- name: gcr.io/google-samples/microservices-demo/cartservice 
+  newTag: v0.1.3

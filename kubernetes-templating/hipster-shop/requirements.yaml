@@ -1,0 +1,9 @@
+dependencies:
+   - name: redis 
+     Version: 16.12.1 
+     repository: https://charts.bitnami.com/bitnami 
+     set:
+       architecture: standalone
+   - name: frontend
+     version: 0.1.0
+     repository: "file://../frontend"

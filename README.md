@@ -117,3 +117,46 @@ What was done:
 
 
 </details>
+
+<details>
+<summary> <b>HW №6 Kubernetes-tamplating</b> </summary>
+=========================================
+
+What was done:
+1. Install nginx-ingress using helm. 
+2. Install cert-manger using helm.
+3. Created ClusterIssuer for prod and stage, it need for cert-manger knew who will issuing certs. - kubernetes-templating/cert-manager/
+4. Created values - kubernetes-templating/chartmuseum/values.yaml. Install chartmuseum using helm. Checked that it work and ssl cert is ok.
+5. Added parametr  --set env.open.DISABLE_API=false and re-install chartmuseum. :star:
+6. Installed plugin "helm plugin install https://github.com/chartmuseum/helm-push". :star:
+7. Created package "helm package clusterissue". :star:
+8. Added new repo "helm repo add my-chartmuseum https://chartmuseum.68000.io". :star:
+9. Pushed my chart "helm cm-push clusterissuer-0.1.0.tgz my-chartmuseum-https" :star:
+10. Created values - kubernetes-templating/harbor/values.yaml. Install harbor using helm. Checked that it work and ssl cert is ok.
+11. Created helmfile - kubernetes-templating/helmfile.yaml. Set value for install CRDs for cert-manager (Install nginx-ingress,cert-manager, harbor, chartmuseum). :star:
+12. Created my own helm chart for hipster-shop app. 
+13. Installed hipster-shop from my own helm chart, checked that it's work. 
+14. Created separate helm chart for frontend service.
+15. Re-installed hipster-shop with out frontend service. Checked that UI is not working. 
+16. Installed frontend service using helm chart. Checked that UI is working.
+17. Templated some variables for frontend service. - kubernetes-templating/frontend/values.yaml
+18. Add frontend service as dependency for hipster-shop helm chat. 
+19. Update dep for hipster-shop. 
+20. Delete redis service from hipster-shop. Added public redis chart in hipster-shop dependency. :star:
+21. Create secret.yaml and encrypt it.
+22. Create template in frontend dir that will use encrypted secret.yaml. 
+23. Install frontend chart and check that secret was added right. 
+24. Add hipster-shop chart and frontend chart in my harbor. https://harbor.68000.io/
+25. Created - kubernetes-templating/repo.sh
+26. Delete services paymentservice and shippingservice from hipster-shop chart. 
+27. Install kubecfg. 
+28. Use more relevant kube.libsonnet - https://raw.githubusercontent.com/bitnami-labs/kube-libsonnet/master/kube.libsonnet
+29. Create jsonnet template for services paymentservice and shippingservice. Add fiel name for container port because it's mandatory field for lib helper. - kubernetes-templating/kubecfg/services.jsonnet
+30. Deploy services paymentservice and shippingservice using kubecfg.
+31. Install qbec. :star:
+32. Delete service productcatalog from hipster-shop. And configure deployment using qbec. Add files in - kubernetestemplating/jsonnet. :star:
+33. Delete service cartservice from hipster-shop.
+34. Prepare deployment for service cartservice using kustomize. Added files in - kubernetestemplating/kustomize. 
+
+
+</details>
